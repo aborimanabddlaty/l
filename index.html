@@ -1,10 +1,9 @@
-
 <!DOCTYPE html>
 <html lang="ar" dir="rtl">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>جمال أحمد - مستشارك العقاري في عجمان</title>
+    <title>جمال أحمد - استثمارك العقاري في الإمارات</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
     <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@300;400;500;700;800&display=swap" rel="stylesheet">
@@ -13,19 +12,20 @@
             font-family: 'Tajawal', sans-serif;
             background: #020617;
             overflow-x: hidden;
+            scroll-behavior: smooth;
         }
         #canvas-container {
-            position: absolute;
+            position: fixed;
             top: 0;
             left: 0;
             width: 100%;
             height: 100%;
             z-index: -1;
-            opacity: 0.6;
+            opacity: 0.4;
         }
         .glass-card {
-            background: rgba(15, 23, 42, 0.7);
-            backdrop-filter: blur(12px);
+            background: rgba(15, 23, 42, 0.85);
+            backdrop-filter: blur(15px);
             border: 1px solid rgba(212, 175, 55, 0.2);
         }
         .gold-gradient {
@@ -37,143 +37,206 @@
             background: linear-gradient(45deg, #d4af37, #f1d37e);
             color: #020617;
             font-weight: 800;
-            box-shadow: 0 4px 15px rgba(212, 175, 55, 0.4);
+            box-shadow: 0 10px 30px rgba(212, 175, 55, 0.4);
             transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 12px;
         }
-        .btn-consult:hover {
-            transform: scale(1.05);
-            box-shadow: 0 6px 20px rgba(212, 175, 55, 0.6);
+        .btn-consult:active {
+            transform: scale(0.95);
         }
-        .floating-btn {
+        .floating-action {
             position: fixed;
-            bottom: 20px;
+            bottom: 30px;
             left: 20px;
             right: 20px;
-            z-index: 50;
+            z-index: 100;
+        }
+        .img-overlay {
+            background: linear-gradient(to top, rgba(2, 6, 23, 0.9), transparent);
+        }
+        .scroll-hide::-webkit-scrollbar {
+            display: none;
+        }
+        /* Video Container Aspect Ratio */
+        .video-container {
+            position: relative;
+            padding-bottom: 56.25%; /* 16:9 ratio */
+            height: 0;
+            overflow: hidden;
+            border-radius: 1.5rem;
+        }
+        .video-container iframe {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            border: 0;
         }
     </style>
 </head>
 <body class="text-white">
 
-    <!-- 3D Background Container -->
+    <!-- 3D Background -->
     <div id="canvas-container"></div>
 
-    <div class="relative z-10 max-w-md mx-auto px-4 pt-10 pb-32 space-y-8">
+    <div class="relative z-10 max-w-md mx-auto px-4 pt-8 pb-40 space-y-10">
         
-        <!-- Header -->
+        <!-- Header Section -->
         <div class="text-center space-y-4">
-            <div class="w-24 h-24 bg-white/10 rounded-full mx-auto flex items-center justify-center backdrop-blur-md border-2 border-[#d4af37] shadow-[0_0_15px_rgba(212,175,55,0.3)]">
+            <div class="w-24 h-24 bg-white/5 rounded-full mx-auto flex items-center justify-center backdrop-blur-md border-2 border-[#d4af37] shadow-[0_0_30px_rgba(212,175,55,0.2)] overflow-hidden">
                 <svg viewBox="0 0 24 24" class="w-12 h-12 text-[#d4af37]" fill="currentColor">
                     <path d="M12 3L2 12h3v8h6v-6h2v6h6v-8h3L12 3z"/>
                 </svg>
             </div>
             <div class="space-y-1">
-                <h2 class="text-sm font-bold tracking-widest text-gray-400 uppercase">الراسخون للعقارات - عجمان</h2>
+                <h2 class="text-xs font-bold tracking-[4px] text-[#d4af37] uppercase">الراسخون للعقارات</h2>
                 <h1 class="text-4xl font-black gold-gradient">جمال أحمد</h1>
-                <p class="text-gray-300">نصنع مستقبلك العقاري في الإمارات</p>
+                <p class="text-gray-300 text-sm font-light">بوابتك للاستثمار الآمن في عجمان والإمارات</p>
             </div>
             
             <!-- Socials -->
-            <div class="flex justify-center gap-4 pt-2">
-                <a href="https://www.facebook.com/share/1B53h9ea9N/?mibextid=wwXIfr" target="_blank" class="p-2 bg-white/5 rounded-lg border border-white/10 hover:border-blue-500 transition-colors">
+            <div class="flex justify-center gap-5 pt-2">
+                <a href="https://www.facebook.com/share/1B53h9ea9N/?mibextid=wwXIfr" target="_blank" class="p-3 bg-white/5 rounded-full border border-white/10 hover:bg-blue-600/20 transition-all">
                     <svg class="w-5 h-5 text-blue-500 fill-current" viewBox="0 0 24 24"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg>
                 </a>
-                <a href="https://www.instagram.com/gamalfoda2019?igsh=ZHVocXlpeGo3N2xh" target="_blank" class="p-2 bg-white/5 rounded-lg border border-white/10 hover:border-pink-500 transition-colors">
+                <a href="https://www.instagram.com/gamalfoda2019?igsh=ZHVocXlpeGo3N2xh" target="_blank" class="p-3 bg-white/5 rounded-full border border-white/10 hover:bg-pink-600/20 transition-all">
                     <svg class="w-5 h-5 text-pink-500 fill-current" viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>
                 </a>
             </div>
         </div>
 
-        <!-- Featured Offer -->
-        <div class="glass-card rounded-3xl overflow-hidden shadow-2xl relative border-l-4 border-[#d4af37]">
-            <div class="p-6 space-y-4">
-                <div class="flex justify-between items-center">
-                    <span class="bg-red-600 text-[10px] font-bold px-2 py-1 rounded-full uppercase tracking-tighter animate-pulse">عرض حصري</span>
-                    <span class="text-xs text-gray-400">منطقة العالية، عجمان</span>
-                </div>
-                <h3 class="text-2xl font-bold">أرض سكني تجاري لقطة</h3>
-                <div class="grid grid-cols-2 gap-4 text-sm">
-                    <div class="bg-white/5 p-3 rounded-xl border border-white/10">
-                        <p class="text-gray-400 text-xs">المساحة</p>
-                        <p class="font-bold">256 متر مربع</p>
-                    </div>
-                    <div class="bg-white/5 p-3 rounded-xl border border-white/10">
-                        <p class="text-gray-400 text-xs">التصريح</p>
-                        <p class="font-bold">أرضي + 3 أدوار</p>
+        <!-- Image Gallery -->
+        <div class="space-y-4">
+            <h3 class="text-sm font-bold text-gray-400 px-2 flex justify-between items-center">
+                <span>جمال الاستثمار في الإمارات</span>
+                <span class="w-12 h-[1px] bg-[#d4af37]"></span>
+            </h3>
+            <div class="flex gap-4 overflow-x-auto scroll-hide pb-2">
+                <div class="min-w-[280px] h-48 rounded-3xl overflow-hidden relative shadow-xl">
+                    <img src="https://images.unsplash.com/photo-1512453979798-5ea266f8880c?q=80&w=800" class="w-full h-full object-cover" alt="دبي">
+                    <div class="absolute inset-0 img-overlay p-4 flex items-end">
+                        <p class="text-xs font-bold text-white">عمران عالمي وفرص ذهبية</p>
                     </div>
                 </div>
-                <a href="https://wa.me/971525344448?text=أهلاً سيد جمال، أرغب بالاستفسار عن أرض العالية (256م)" 
-                   class="flex items-center justify-center gap-2 w-full py-4 btn-consult rounded-2xl">
-                    <svg class="w-5 h-5 fill-current" viewBox="0 0 24 24"><path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946.003-6.556 5.338-11.891 11.893-11.891 3.181.001 6.167 1.24 8.413 3.488 2.245 2.248 3.481 5.236 3.48 8.414-.003 6.557-5.338 11.892-11.893 11.892-1.99-.001-3.951-.5-5.688-1.448l-6.305 1.654zm6.597-3.807c1.676.995 3.276 1.591 5.392 1.592 5.448 0 9.886-4.434 9.889-9.885.002-5.462-4.415-9.89-9.881-9.892-5.452 0-9.887 4.434-9.889 9.884 0 2.225.584 3.914 1.527 5.523l-.999 3.648 3.956-.872zm11.387-5.477c-.301-.15-1.78-.879-2.056-.979-.275-.101-.476-.151-.675.15-.199.301-.77.979-.944 1.179-.175.199-.349.226-.65.076-.301-.15-1.274-.469-2.426-1.493-.896-.8-1.5-1.787-1.274-2.107.174-.301.651-.814.954-1.127.125-.135.215-.225.299-.374.125-.224.062-.421-.03-.622-.091-.199-.675-1.631-.925-2.231-.244-.582-.493-.504-.675-.513-.175-.009-.375-.011-.575-.011s-.525.076-.8.376c-.275.301-1.05 1.026-1.05 2.503 0 1.478 1.075 2.903 1.225 3.103.15.201 2.116 3.231 5.126 4.532.716.31 1.274.494 1.708.633.719.227 1.373.195 1.89.117.575-.086 1.78-.726 2.031-1.427.25-.7.25-1.301.175-1.427-.075-.126-.275-.201-.575-.351z"/></svg>
-                    <span>اطلب استشارتك لهذا العرض</span>
-                </a>
+                <div class="min-w-[280px] h-48 rounded-3xl overflow-hidden relative shadow-xl">
+                    <img src="https://images.unsplash.com/photo-1582672099472-f9035c1ec46e?q=80&w=800" class="w-full h-full object-cover" alt="عقارات الإمارات">
+                    <div class="absolute inset-0 img-overlay p-4 flex items-end">
+                        <p class="text-xs font-bold text-white">عائد استثماري هو الأعلى عالمياً</p>
+                    </div>
+                </div>
             </div>
         </div>
 
-        <!-- Quote -->
-        <div class="text-center italic text-gray-400 px-6 py-4">
-            "العقار هو الطريق الأضمن للثراء، ونحن دليلك في هذا الطريق."
+        <!-- NEW: Video Section -->
+        <div class="space-y-4">
+            <h3 class="text-sm font-bold text-gray-400 px-2 flex justify-between items-center">
+                <span>جولة عقارية (فيديو)</span>
+                <span class="w-12 h-[1px] bg-[#d4af37]"></span>
+            </h3>
+            <div class="glass-card p-2 rounded-[1.8rem] shadow-2xl">
+                <div class="video-container">
+                    <!-- استبدل الرابط أدناه برابط فيديو العقار الخاص بك -->
+                    <iframe 
+                        src="https://.<iframe src="https://www.facebook.com/plugins/video.php?height=476&href=https%3A%2F%2Fwww.facebook.com%2Freel%2F904468189014557%2F&show_text=true&width=380&t=0" width="380" height="591" style="border:none;overflow:hidden" scrolling="no" frameborder="0" allowfullscreen="true" allow="autoplay; clipboard-write; encrypted-media; picture-in-picture; web-share" allowFullScreen="true"></iframe> 
+                        title="Real Estate Tour" 
+                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+                        allowfullscreen>
+                    </iframe>
+                </div>
+            </div>
+        </div>
+
+        <!-- Exclusive Offer Card -->
+        <div class="glass-card rounded-[2.5rem] overflow-hidden shadow-2xl relative border-t border-white/10 group">
+            <div class="p-8 space-y-6">
+                <div class="flex justify-between items-center">
+                    <span class="bg-red-600 text-[10px] font-bold px-3 py-1 rounded-full uppercase animate-pulse">فرصة استثمارية</span>
+                    <span class="text-xs text-[#d4af37] font-medium tracking-widest">العالية | عجمان</span>
+                </div>
+                <div class="space-y-2 text-white">
+                    <h3 class="text-3xl font-black leading-tight">أرض للبيع بموقع استراتيجي</h3>
+                    <p class="text-gray-400 text-sm">قطعة 0872 - تصريح بناء سكني تجاري</p>
+                </div>
+                
+                <div class="grid grid-cols-2 gap-4">
+                    <div class="bg-white/5 p-4 rounded-2xl border border-white/5 text-center">
+                        <p class="text-gray-500 text-[10px] mb-1">إجمالي المساحة</p>
+                        <p class="text-xl font-black gold-gradient">256 م²</p>
+                    </div>
+                    <div class="bg-white/5 p-4 rounded-2xl border border-white/5 text-center">
+                        <p class="text-gray-500 text-[10px] mb-1">الارتفاع المسموح</p>
+                        <p class="text-xl font-black gold-gradient">أرضي + 3</p>
+                    </div>
+                </div>
+
+                <div class="pt-2 border-t border-white/5">
+                    <p class="text-center text-xs text-gray-400 leading-relaxed italic">
+                        "استثمر اليوم في منطقة العالية الواعدة، حيث يتلاقى الموقع المتميز مع العائد المضمون."
+                    </p>
+                </div>
+            </div>
         </div>
 
         <!-- Footer Info -->
-        <div class="text-center space-y-2 opacity-50 text-xs">
-            <p>الراسخون للعقارات - عجمان - الإمارات العربية المتحدة</p>
-            <p>Designed by ELSMKARYMEDIA</p>
+        <div class="text-center space-y-3 opacity-60 pb-10">
+            <p class="text-[10px] text-gray-500 uppercase tracking-widest font-bold">الراسخون للعقارات - عجمان</p>
+            <p class="text-[9px] text-[#d4af37]/60">Design by ELSMKARYMEDIA</p>
         </div>
     </div>
 
-    <!-- Main Floating Action Button -->
-    <div class="floating-btn">
-        <a href="https://wa.me/971525344448?text=السلام عليكم سيد جمال، أحتاج لاستشارة عقارية بخصوص عروض عجمان" 
-           class="flex items-center justify-center gap-3 w-full py-5 btn-consult rounded-full text-xl shadow-[0_10px_30px_rgba(212,175,55,0.5)]">
-            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z"></path></svg>
-            <span>اطلب استشارتك الآن</span>
+    <!-- Main Fixed Floating Button -->
+    <div class="floating-action px-4">
+        <a href="https://api.whatsapp.com/send?phone=971525344448&text=%D8%A7%D9%84%D8%B3%D9%84%D8%A7%D9%85%20%D8%B9%D9%84%D9%8A%D9%83%D9%85%20%D8%B3%D9%8A%D8%AF%20%D8%AC%D9%85%D8%A7%D9%84%D8%8C%20%D8%A3%D8%AD%D8%AA%D8%A7%D8%AC%20%D9%84%D8%A7%D8%B3%D8%AA%D8%B4%D8%A7%D8%B1%D8%A9%20%D8%B9%D9%82%D8%A7%D8%B1%D9%8A%D8%A9%20%D8%A8%D8%AE%D8%B5%D9%88%D8%B5%20%D8%A7%D9%84%D8%A7%D8%B3%D8%AA%D8%AB%D9%85%D8%A7%D8%B1%20%D9%81%D9%8A%20%D8%B9%D8%AC%D9%85%D8%A7%D9%86" 
+           class="w-full py-5 btn-consult rounded-full text-lg shadow-[0_15px_45px_rgba(212,175,55,0.5)] border border-white/20">
+            <svg class="w-7 h-7 fill-current" viewBox="0 0 24 24"><path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946.003-6.556 5.338-11.891 11.893-11.891 3.181.001 6.167 1.24 8.413 3.488 2.245 2.248 3.481 5.236 3.48 8.414-.003 6.557-5.338 11.892-11.893 11.892-1.99-.001-3.951-.5-5.688-1.448l-6.305 1.654zm6.597-3.807c1.676.995 3.276 1.591 5.392 1.592 5.448 0 9.886-4.434 9.889-9.885.002-5.462-4.415-9.89-9.881-9.892-5.452 0-9.887 4.434-9.889 9.884 0 2.225.584 3.914 1.527 5.523l-.999 3.648 3.956-.872zm11.387-5.477c-.301-.15-1.78-.879-2.056-.979-.275-.101-.476-.151-.675.15-.199.301-.77.979-.944 1.179-.175.199-.349.226-.65.076-.301-.15-1.274-.469-2.426-1.493-.896-.8-1.5-1.787-1.274-2.107.174-.301.651-.814.954-1.127.125-.135.215-.225.299-.374.125-.224.062-.421-.03-.622-.091-.199-.675-1.631-.925-2.231-.244-.582-.493-.504-.675-.513-.175-.009-.375-.011-.575-.011s-.525.076-.8.376c-.275.301-1.05 1.026-1.05 2.503 0 1.478 1.075 2.903 1.225 3.103.15.201 2.116 3.231 5.126 4.532.716.31 1.274.494 1.708.633.719.227 1.373.195 1.89.117.575-.086 1.78-.726 2.031-1.427.25-.7.25-1.301.175-1.427-.075-.126-.275-.201-.575-.351z"/></svg>
+            <span>اطلب استشارتك الآن </span>
         </a>
     </div>
 
     <script>
-        // Three.js 3D Background - Golden UAE Themed
+        // Three.js Logic
         let scene, camera, renderer, crystal;
 
         function init3D() {
             scene = new THREE.Scene();
             camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
-            
             renderer = new THREE.WebGLRenderer({ antialias: true, alpha: true });
             renderer.setSize(window.innerWidth, window.innerHeight);
+            renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
             document.getElementById('canvas-container').appendChild(renderer.domElement);
 
-            // Create a stylized 3D Building/Tower shape
-            const geometry = new THREE.CylinderGeometry(0.5, 1, 4, 4);
+            const geometry = new THREE.OctahedronGeometry(2, 0);
             const material = new THREE.MeshPhongMaterial({ 
                 color: 0xd4af37, 
                 shininess: 100,
                 specular: 0xffffff,
-                flatShading: true
+                flatShading: true,
+                transparent: true,
+                opacity: 0.8
             });
-            
             crystal = new THREE.Mesh(geometry, material);
             scene.add(crystal);
 
-            // Lights
-            const ambientLight = new THREE.AmbientLight(0x404040);
+            const ambientLight = new THREE.AmbientLight(0xffffff, 0.5);
             scene.add(ambientLight);
             
-            const pointLight = new THREE.PointLight(0xffffff, 1, 100);
-            pointLight.position.set(10, 10, 10);
+            const pointLight = new THREE.PointLight(0xd4af37, 2, 50);
+            pointLight.position.set(5, 5, 5);
             scene.add(pointLight);
 
-            camera.position.z = 5;
+            camera.position.z = 6;
         }
 
         function animate() {
             requestAnimationFrame(animate);
             if(crystal) {
-                crystal.rotation.y += 0.01;
-                crystal.rotation.x += 0.005;
-                
-                // Floating movement
-                crystal.position.y = Math.sin(Date.now() * 0.002) * 0.2;
+                crystal.rotation.y += 0.005;
+                crystal.rotation.z += 0.002;
+                crystal.position.y = Math.sin(Date.now() * 0.001) * 0.4;
             }
             renderer.render(scene, camera);
         }
