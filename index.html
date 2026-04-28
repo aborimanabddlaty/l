@@ -1,0 +1,406 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>KEMIT.STORE.AE | بيجامات وهوم وير من القطن المصري</title>
+    <!-- استدعاء خط تجول الفاخر من جوجل -->
+    <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@300;500;700;800&display=swap" rel="stylesheet">
+    <!-- استدعاء مكتبة الأيقونات لواتساب -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    
+    <style>
+        :root {
+            --primary-color: #1a252f; /* أزرق داكن/كحلي فاخر */
+            --accent-color: #c5a059; /* ذهبي أنيق وهادئ */
+            --bg-light: #fbfbf9; /* لون قطني مريح للعين */
+            --text-dark: #222222;
+            --whatsapp-color: #25D366;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Tajawal', sans-serif;
+            scroll-behavior: smooth;
+        }
+
+        body {
+            background-color: var(--bg-light);
+            color: var(--text-dark);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        /* شريط التنقل (Header) */
+        header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px 5%;
+            background-color: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            box-shadow: 0 2px 15px rgba(0,0,0,0.05);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        .logo {
+            font-size: 26px;
+            font-weight: 800;
+            color: var(--primary-color);
+            letter-spacing: 1px;
+            text-transform: uppercase;
+        }
+
+        .logo span {
+            color: var(--accent-color);
+        }
+
+        nav a {
+            text-decoration: none;
+            color: var(--text-dark);
+            margin: 0 15px;
+            font-weight: 500;
+            font-size: 1.1rem;
+            transition: color 0.3s ease;
+        }
+
+        nav a:hover {
+            color: var(--accent-color);
+        }
+
+        /* القسم الرئيسي (Hero Section) */
+        .hero {
+            height: 90vh;
+            background: linear-gradient(rgba(26, 37, 47, 0.5), rgba(26, 37, 47, 0.8)), url('https://images.unsplash.com/photo-1542838686-37ed7a9b0ceb?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&q=80') center/cover;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            color: white;
+            padding: 0 20px;
+        }
+
+        .hero h1 {
+            font-size: 4rem;
+            margin-bottom: 20px;
+            font-weight: 800;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+        }
+
+        .hero p {
+            font-size: 1.5rem;
+            margin-bottom: 40px;
+            max-width: 700px;
+            font-weight: 300;
+            line-height: 1.8;
+        }
+
+        .btn-primary {
+            padding: 16px 45px;
+            background-color: var(--accent-color);
+            color: white;
+            text-decoration: none;
+            font-size: 1.2rem;
+            border-radius: 50px;
+            transition: all 0.3s ease;
+            font-weight: 700;
+            border: none;
+            cursor: pointer;
+            box-shadow: 0 4px 15px rgba(197, 160, 89, 0.4);
+        }
+
+        .btn-primary:hover {
+            background-color: #b38f4d;
+            transform: translateY(-3px);
+            box-shadow: 0 6px 20px rgba(197, 160, 89, 0.6);
+        }
+
+        /* عنوان الأقسام */
+        .section-title {
+            text-align: center;
+            margin: 80px 0 20px;
+            font-size: 2.8rem;
+            color: var(--primary-color);
+            font-weight: 800;
+        }
+        
+        .section-subtitle {
+            text-align: center;
+            color: #666;
+            margin-bottom: 50px;
+            font-size: 1.2rem;
+        }
+
+        /* قسم المنتجات (Products) */
+        .products {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 40px;
+            padding: 20px 5% 80px;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .product-card {
+            background: white;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.04);
+            transition: transform 0.4s ease, box-shadow 0.4s ease;
+            text-align: center;
+            position: relative;
+        }
+
+        .product-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 40px rgba(0,0,0,0.08);
+        }
+
+        .badge {
+            position: absolute;
+            top: 15px;
+            right: 15px;
+            background-color: var(--accent-color);
+            color: white;
+            padding: 5px 15px;
+            border-radius: 20px;
+            font-size: 0.9rem;
+            font-weight: bold;
+        }
+
+        .product-img {
+            width: 100%;
+            height: 400px;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+        }
+
+        .product-card:hover .product-img {
+            transform: scale(1.05);
+        }
+
+        .product-info {
+            padding: 25px 20px;
+            background: white;
+            position: relative;
+            z-index: 2;
+        }
+
+        .product-title {
+            font-size: 1.3rem;
+            color: var(--primary-color);
+            margin-bottom: 10px;
+            font-weight: 700;
+        }
+
+        .product-price {
+            color: var(--accent-color);
+            font-size: 1.4rem;
+            font-weight: 800;
+            margin-bottom: 20px;
+        }
+
+        .product-card .btn-outline {
+            padding: 12px 30px;
+            font-size: 1rem;
+            display: inline-block;
+            border: 2px solid var(--primary-color);
+            color: var(--primary-color);
+            text-decoration: none;
+            border-radius: 50px;
+            font-weight: bold;
+            transition: all 0.3s ease;
+            width: 80%;
+        }
+
+        .product-card .btn-outline:hover {
+            background-color: var(--primary-color);
+            color: white;
+        }
+
+        /* مميزات البراند */
+        .features {
+            background-color: white;
+            padding: 80px 5%;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+            text-align: center;
+        }
+
+        .feature-item i {
+            font-size: 3rem;
+            color: var(--accent-color);
+            margin-bottom: 20px;
+        }
+
+        .feature-item h3 {
+            color: var(--primary-color);
+            margin-bottom: 15px;
+            font-size: 1.4rem;
+        }
+
+        /* زر الواتساب العائم */
+        .whatsapp-float {
+            position: fixed;
+            width: 60px;
+            height: 60px;
+            bottom: 40px;
+            right: 40px;
+            background-color: var(--whatsapp-color);
+            color: #FFF;
+            border-radius: 50px;
+            text-align: center;
+            font-size: 30px;
+            box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.2);
+            z-index: 1000;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-decoration: none;
+            transition: transform 0.3s ease;
+            animation: pulse 2s infinite;
+        }
+
+        .whatsapp-float:hover {
+            transform: scale(1.1);
+            color: white;
+        }
+
+        @keyframes pulse {
+            0% { box-shadow: 0 0 0 0 rgba(37, 211, 102, 0.7); }
+            70% { box-shadow: 0 0 0 15px rgba(37, 211, 102, 0); }
+            100% { box-shadow: 0 0 0 0 rgba(37, 211, 102, 0); }
+        }
+
+        /* الفوتر (Footer) */
+        footer {
+            background-color: var(--primary-color);
+            color: white;
+            text-align: center;
+            padding: 40px 20px;
+        }
+
+        /* التجاوب مع الهواتف (Responsive) */
+        @media (max-width: 768px) {
+            header {
+                flex-direction: column;
+                padding: 15px;
+            }
+            nav {
+                margin-top: 15px;
+                display: flex;
+                flex-wrap: wrap;
+                justify-content: center;
+                gap: 10px;
+            }
+            .hero h1 {
+                font-size: 2.8rem;
+            }
+            .hero p {
+                font-size: 1.1rem;
+            }
+            .section-title {
+                font-size: 2.2rem;
+            }
+            .product-img {
+                height: 300px;
+            }
+            .whatsapp-float {
+                bottom: 20px;
+                right: 20px;
+                width: 50px;
+                height: 50px;
+                font-size: 25px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <div class="logo">KEMIT<span>.</span>STORE</div>
+        <nav>
+            <a href="#home">الرئيسية</a>
+            <a href="#features">لماذا كيميت؟</a>
+            <a href="#shop">المجموعة الجديدة</a>
+        </nav>
+    </header>
+
+    <section class="hero" id="home">
+        <h1>رفاهية القطن المصري في بيتك</h1>
+        <p>تشكيلة حصرية من البيجامات وملابس المنزل المصممة بعناية في مصر لتمنحك أقصى درجات الراحة والأناقة في الإمارات.</p>
+        <a href="#shop" class="btn-primary">تسوق التشكيلة الآن</a>
+    </section>
+
+    <section class="features" id="features">
+        <div class="feature-item">
+            <i class="fa-solid fa-leaf"></i>
+            <h3>قطن مصري 100%</h3>
+            <p>نعومة فائقة ولطافة على البشرة لراحة لا مثيل لها.</p>
+        </div>
+        <div class="feature-item">
+            <i class="fa-solid fa-gem"></i>
+            <h3>تصاميم فاخرة</h3>
+            <p>تفاصيل أنيقة تناسب الذوق الرفيع وتبرز جمال الإطلالة المنزلية.</p>
+        </div>
+        <div class="feature-item">
+            <i class="fa-solid fa-truck-fast"></i>
+            <h3>توصيل سريع بالإمارات</h3>
+            <p>شحن سريع وموثوق لجميع الإمارات مع طرق دفع مرنة.</p>
+        </div>
+    </section>
+
+    <h2 class="section-title" id="shop">وصل حديثاً</h2>
+    <p class="section-subtitle">أكثر الموديلات طلباً هذا الأسبوع</p>
+    
+    <section class="products">
+        <!-- المنتج الأول -->
+        <div class="product-card">
+            <div class="badge">الأكثر مبيعاً</div>
+            <img src="https://images.unsplash.com/photo-1620016258071-7eb32688b13c?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="بيجاما قطن فاخرة" class="product-img">
+            <div class="product-info">
+                <h3 class="product-title">طقم بيجاما كلاسيك قطن</h3>
+                <p class="product-price">250 AED</p>
+                <a href="#order" class="btn-outline">اطلب الآن</a>
+            </div>
+        </div>
+
+        <!-- المنتج الثاني -->
+        <div class="product-card">
+            <img src="https://images.unsplash.com/photo-1596755490472-8820c74fcd7c?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="روب استحمام ومنزل" class="product-img">
+            <div class="product-info">
+                <h3 class="product-title">روب منزل فاخر - ملمس حريري</h3>
+                <p class="product-price">320 AED</p>
+                <a href="#order" class="btn-outline">اطلب الآن</a>
+            </div>
+        </div>
+
+        <!-- المنتج الثالث -->
+        <div class="product-card">
+            <div class="badge" style="background-color: var(--primary-color);">حصري</div>
+            <img src="https://images.unsplash.com/photo-1620794341491-9f546c76c023?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="طقم استرخاء" class="product-img">
+            <div class="product-info">
+                <h3 class="product-title">طقم استرخاء قطعتين - كحلي</h3>
+                <p class="product-price">190 AED</p>
+                <a href="#order" class="btn-outline">اطلب الآن</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- زر الواتساب العائم -->
+    <a href="https://wa.me/971000000000?text=مرحباً،%20أريد%20الاستفسار%20عن%20مجموعة%20الهوم%20وير" class="whatsapp-float" target="_blank" title="تواصل معنا عبر واتساب">
+        <i class="fa-brands fa-whatsapp"></i>
+    </a>
+
+    <footer>
+        <p>&copy; 2026 KEMIT.STORE.AE. تم التصميم لراحة تدوم.</p>
+    </footer>
+
+</body>
+</html>
